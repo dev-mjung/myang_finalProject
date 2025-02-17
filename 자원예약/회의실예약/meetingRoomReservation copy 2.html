@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script src="/jquery-3.7.1.min.js"></script>
+    <script src="/bootstrap-4.6.2-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <script
+    type="text/javascript"
+    src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"
+  ></script>
+  <link
+    href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css"
+    rel="stylesheet"
+    type="text/css"
+    />
+    
+    <link rel="stylesheet" href="/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/mj_common/common.css">
+        <link rel="stylesheet" href="/자원예약/모달/css/modal.css">
+        <link rel="stylesheet" href="/자원예약/css/reservation.css">
+
+    <style type="text/css">
+        body {
+            color: #4D4D4D;
+            font: 10pt arial;
+        }
+    </style>
+    <title>회의실예약</title>
+</head>
+<body>
+    <!-- 예약 내역 작성 모달 -->
+    <div class="modal fade common_modal" id="addReservationModal" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h5 id="modal-title" class="modal-title">자원예약하기</h5>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+            <form class="common-form" id="common-form" name="addReservationFrm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <form action="/action_page.php">
+                        <label for="common-title">자원 예약 시간</label>
+                        <input type="date" id="common-title" name="birthday">
+                        <input type="submit" value="Submit">
+                      </form>
+                    <span class="error">필수입력</span>
+                </div>
+                <div class="form-group">
+                    <form action="/action_page.php">
+                        <label for="common-title">자원 반납 시간</label>
+                        <input type="date" id="common-title" name="birthday">
+                        <input type="submit" value="Submit">
+                      </form>
+                    <span class="error">필수입력</span>
+                </div>
+                <div class="form-group">
+                    <label for="common-title">예약 항목 선택</label>
+                    <div class="searchsortbox">
+                        <div class="select_container">
+                            <select>
+                                <option value="">회의실예약</option>
+                                <option value="">차량예약</option>
+                            </select>
+                            <select>
+                                <option value="">제5 소회의실</option>
+                                <option value="">대회의실</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span class="error">필수입력</span>
+                </div>
+                <div class="form-group">
+                    <label for="common-title">예약자</label>
+                    <span>예약자명</span>
+                    <span class="error">필수입력</span>
+                </div>
+                <div class="button-wrapper">
+                    <!-- data-dismiss 추가 Cancel 버튼 누르면 모달 닫힘 -->
+                    <button type="button" id="modal_cancel" data-dismiss="modal" onclick="reset()">취소</button>
+                    <button type="button" class="purple" name="addReservation">예약</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="common_wrapper">
+        <div class="side_menu_wrapper">
+            <div class="side_menu_inner_wrapper">
+                <span class="common_title">자원예약</span>
+                <button type="button" data-toggle="modal" data-target="#addReservationModal" data-value="${option.optionno}">자원 예약하기</button>
+                
+                <ul class="side_menu_list">
+                    <li class="active"><a href="#">회의실예약</a></li>
+                    <li><a href="#">차량예약</a></li>
+                    <li><a href="#">예약내역</a></li>
+                    <li><a href="#">결재대기문서함</a></li>
+                    <li>
+                        <a href="#">관리자메뉴</a>
+                        <ul>
+                            <li><a href="#">예약내역</a></li>
+                            <li><a href="#">자원관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contents_wrapper">
+            <div class="contents_inner_wrapper">
+                <div class="common_title mb-80">회의실예약</div>
+                <div class="resourceReservation_wrapper">
+                    <div class="contents">
+                        <div class="content_title">예약일자</div>
+                    </div>
+                    <div class="contents">
+                        <div id="visualization"></div>
+
+    <script>
+        function showVisibleGroups() {
+            var a = timeline.getVisibleGroups();
+            document.getElementById("visibleGroupsContainer").innerHTML = ""
+            document.getElementById("visibleGroupsContainer").innerHTML += a;
+        };
+
+        var now = Date.now()
+
+        var options = {
+            stack: true,
+            maxHeight: 640,
+            horizontalScroll: false,
+            verticalScroll: false,
+            zoomKey: "ctrlKey",
+            start: Date.now() - 1000 * 60 * 60 * 24 * 3, // minus 3 days
+            end: Date.now() + 1000 * 60 * 60 * 24 * 21, // plus 1 months aprox.
+            orientation: {
+                axis: "both",
+                item: "top"
+            },
+        };
+        var groups = new vis.DataSet();
+        var items = new vis.DataSet();
+
+        var count = 300;
+
+        for (var i = 0; i < count; i++) {
+            var start = now + 1000 * 60 * 60 * 24 * (i + Math.floor(Math.random() * 7))
+            var end = start + 1000 * 60 * 60 * 24 * (1 + Math.floor(Math.random() * 5))
+
+            groups.add({
+                id: i,
+                content: 'Task ' + i,
+                order: i
+            })
+
+            items.add({
+                id: i,
+                group: i,
+                start: start,
+                end: end,
+                type: 'range',
+                content: 'Item ' + i
+            });
+        }
+
+        // create a Timeline
+        var container = document.getElementById('visualization');
+        timeline = new vis.Timeline(container, null, options);
+        timeline.setGroups(groups);
+        timeline.setItems(items);
+
+        function debounce(func, wait = 100) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func.apply(this, args);
+                }, wait);
+            };
+        }
+
+        let groupFocus = (e) => {
+            let vGroups = timeline.getVisibleGroups()
+            let vItems = vGroups.reduce((res, groupId) => {
+                let group = timeline.itemSet.groups[groupId]
+                if (group.items) {
+                    res = res.concat(Object.keys(group.items))
+                }
+                return res
+            }, [])
+            timeline.focus(vItems)
+        }
+        this.timeline.on("scroll", debounce(groupFocus, 200))
+        // Enabling the next line leads to a continuous since calling focus might scroll vertically even if it shouldn't
+        // this.timeline.on("scrollSide", debounce(groupFocus, 200))
+    </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

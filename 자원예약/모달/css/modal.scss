@@ -1,0 +1,26 @@
+.common_modal {
+    .button-wrapper {
+
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+
+            width: 64px;
+            height: 40px;
+            margin-left: 1%;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #454545;
+            
+
+            border: none;
+            outline: none;
+
+            &.purple {
+                color: #fff;
+                background-color: #6d9cff;
+            }
+        }
+    }
+}
