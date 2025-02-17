@@ -1,0 +1,190 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.common_wrapper {
+  display: flex;
+  height: calc(100vh - 65px);
+}
+.common_wrapper .common_title {
+  font-size: 24px;
+  font-weight: 500;
+  cursor: default;
+}
+.common_wrapper .common_title.mb-80 {
+  margin-bottom: 80px;
+}
+.common_wrapper .content_title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  cursor: default;
+}
+.common_wrapper .content_sub_title {
+  font-size: 16px;
+  font-weight: 400;
+  cursor: default;
+}
+.common_wrapper .searchsortbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.common_wrapper .searchsortbox .search_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.common_wrapper .searchsortbox .search_container form {
+  border-bottom: 1px solid #ddd;
+}
+.common_wrapper .searchsortbox .search_container input[type=text] {
+  padding: 6px;
+  font-size: 17px;
+  border: none;
+  background-color: transparent;
+}
+.common_wrapper .searchsortbox .search_container input[type=text]:focus {
+  outline: none;
+}
+.common_wrapper .searchsortbox .search_container button {
+  background: none;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.common_wrapper .searchsortbox .select_container {
+  margin-right: 10px;
+}
+.common_wrapper .searchsortbox .select_container select {
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 14px;
+}
+.common_wrapper .side_menu_wrapper {
+  background-color: #ecf0f8;
+  display: flex;
+  flex-direction: column;
+  width: 17%;
+  height: calc(100vh - 65px);
+}
+.common_wrapper .side_menu_wrapper a, .common_wrapper .side_menu_wrapper a:link, .common_wrapper .side_menu_wrapper a:visited {
+  color: #000;
+  text-decoration: none;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper {
+  margin: 68px 0 0 42px;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper button {
+  width: 80%;
+  height: 44px;
+  margin-top: 30px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper ul.side_menu_list {
+  margin-top: 40px;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper ul.side_menu_list li {
+  margin-bottom: 20px;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper ul.side_menu_list li.active > a {
+  color: #6d9cff;
+  font-weight: 700;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper ul.side_menu_list li:hover > a {
+  font-weight: 700;
+  color: #6d9cff;
+}
+.common_wrapper .side_menu_wrapper .side_menu_inner_wrapper ul.side_menu_list li ul {
+  margin: 14px 0 0 44px;
+}
+.common_wrapper .contents_wrapper {
+  width: calc(100vw - 17%);
+  overflow-y: auto;
+}
+.common_wrapper .contents_wrapper .contents_inner_wrapper {
+  margin: 30px 56px;
+}
+.common_wrapper .common_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.common_wrapper .common_table tbody {
+  border-bottom: 1px solid #ddd;
+}
+.common_wrapper .common_table th, .common_wrapper .common_table td {
+  font-size: 16px;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid #ddd;
+}
+.common_wrapper .common_table th {
+  font-weight: bold;
+}
+.common_wrapper .common_table .flex {
+  display: flex;
+}
+.common_wrapper .common_table .emergency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 16px;
+  font-size: 12px;
+  border-radius: 10px;
+  background-color: red;
+  color: #fff;
+  margin-right: 4px;
+}/*# sourceMappingURL=common.css.map */

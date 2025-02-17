@@ -1,0 +1,9 @@
+.resourceReservation_wrapper .common_table th.active, .resourceReservation_wrapper .common_table td.active {
+  background-color: #ddd;
+}
+.resourceReservation_wrapper .common_table td {
+  cursor: pointer;
+}
+.resourceReservation_wrapper .common_table td:first-child {
+  border-right: 1px solid #ddd;
+}/*# sourceMappingURL=reservation.css.map */

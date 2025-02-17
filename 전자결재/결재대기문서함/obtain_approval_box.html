@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/mj_common/common.css">
+    <link rel="stylesheet" href="/전자결재/홈/css/approval_main.css">
+    <title>전자결재 - 결재대기문서함</title>
+</head>
+<body>
+    <div class="common_wrapper">
+        <div class="side_menu_wrapper">
+            <div class="side_menu_inner_wrapper">
+                <span class="common_title">전자결재</span>
+                <button type="button">기안문서 작성</button>
+                <ul class="side_menu_list">
+                    <li><a href="#">홈</a></li>
+                    <li class="active"><a href="#">결재대기문서함</a></li>
+                    <li><a href="#">참조문서함</a></li>
+                    <li><a href="#">임시저장함</a></li>
+                    <li><a href="#">기안문서함</a></li>
+                    <li><a href="#">팀문서함</a></li>
+                    <li><a href="#">환경설정</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contents_wrapper">
+            <div class="contents_inner_wrapper">
+                <div class="common_title mb-80">결재대기문서함</div>
+                <div class="approval_wrapper">
+                    <div class="contents">
+                        <div class="content_title">결재예정문서</div>
+                        <div class="content_sub_title">결재예정 문서가 <span style="color: #95b6ff; font-weight: bold;">3</span>건 있습니다.</div>
+                        <div class="searchsortbox">
+                            <div class="select_container">
+                                <select>
+                                    <option value="0">기안자</option>
+                                    <option value="1">기안부서</option>
+                                    <option value="2">종류</option>
+                                </select>
+                            </div> 
+                            
+                            <div class="search_container">
+                                <form action="/action_page.php">
+                                    <input type="text" placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <table class="common_table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">기안일</th>
+                                    <th style="width: 10%;">종류</th>
+                                    <th style="width: 60%;">제목</th>
+                                    <th style="width: 10%;">기안부서</th>
+                                    <th style="width: 10%;">기안자</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">결재예정문서가 없습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-02-11</td>
+                                    <td>지출결의서</td>
+                                    <td style="text-align: left;" class="flex"><span class="emergency">긴급</span> 안녕하세요.</td>
+                                    <td>개발팀</td>
+                                    <td>한민정</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-02-11</td>
+                                    <td>업무품의</td>
+                                    <td style="text-align: left;">안녕하세요.</td>
+                                    <td>운영팀</td>
+                                    <td>이야호</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-02-11</td>
+                                    <td>업무품의</td>
+                                    <td style="text-align: left;">안녕하세요.</td>
+                                    <td>운영팀</td>
+                                    <td>이야호</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-02-11</td>
+                                    <td>업무품의</td>
+                                    <td style="text-align: left;">안녕하세요.</td>
+                                    <td>운영팀</td>
+                                    <td>이야호</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-02-11</td>
+                                    <td>업무품의</td>
+                                    <td style="text-align: left;">안녕하세요.</td>
+                                    <td>운영팀</td>
+                                    <td>이야호</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

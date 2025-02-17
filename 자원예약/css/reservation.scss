@@ -1,0 +1,19 @@
+
+// 회의실예약
+.resourceReservation_wrapper {
+
+    .common_table {
+    
+        th, td {
+            &.active {
+                background-color: #ddd;
+            }
+        }
+        td {
+            cursor: pointer;
+            &:first-child {
+                border-right: 1px solid #ddd;
+            }
+        }
+    }
+}
