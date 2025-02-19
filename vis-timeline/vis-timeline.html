@@ -19,12 +19,16 @@
     <style></style>
   </head>
   <body>
-    <h2>예약 시스템</h2>
+    <div
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <h2>예약 시스템</h2>
 
-    <div style="display: flex; justify-content: end; align-items: center">
-      <div id="today-text" style="margin-right: 10px"></div>
-      <button onclick="prevDate()"><</button>
-      <button onclick="nextDate()">></button>
+      <div style="display: flex; align-items: center">
+        <div id="today-text" style="margin-right: 10px"></div>
+        <button onclick="prevDate()"><</button>
+        <button onclick="nextDate()">></button>
+      </div>
     </div>
 
     <!-- vis 라이브러리 타임라인 ui 영역 -->
@@ -69,11 +73,18 @@
 
     <!-- 테스트용 테이블 -->
     <div id="test-table">
-      <h2>예약 정보 확인</h2>
-      <div style="display: flex; justify-content: end">
-        <button onclick="showData()">새로고침</button>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <h2>예약 정보 확인</h2>
+        <div style="display: flex; justify-content: end">
+          <button onclick="showData()">새로고침</button>
+        </div>
       </div>
-
       <table>
         <tr>
           <th>예약 번호</th>
