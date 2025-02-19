@@ -37,7 +37,8 @@ button:focus {
 }
 
 .vis-timeline {
-  border: none !important;
+  margin-top: 20px;
+  border: 1px solid #bfbfbf;
   border-radius: 10px;
 }
 

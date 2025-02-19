@@ -7,6 +7,8 @@ const groups = [
   { id: "5", content: "Conference Room 5" },
 ];
 
+const weekDay = ["일", "월", "화", "수", "목", "금", "토"];
+
 let today = new Date();
 let startTime = setTime(today, 9, 0);
 let endTime = setTime(today, 18, 0);
@@ -259,6 +261,8 @@ function changeDate(offset) {
   endTime = setTime(today, 18, 0);
   options.start = startTime;
   options.end = endTime;
+  // 주말인 경우 편집 안됨
+  options.editable = !isWeekend(today);
 
   timeline.setOptions({ ...options, start: startTime, end: endTime });
 }
@@ -269,6 +273,12 @@ function setTime(date, hours, minutes) {
   return new Date(date.setHours(hours, minutes, 0, 0));
 }
 
+// 주말인지 확인
+function isWeekend(date) {
+  const day = date.getDay(); // getDay()는 0 (일요일)에서 6 (토요일)까지의 값을 반환
+  return day === 0 || day === 6; // 0은 일요일, 6은 토요일
+}
+
 // withTime 이 true이면 시간까지 return
 function formatDateToKor(date, withTime) {
   let text = `${date.getFullYear()}년 ${
@@ -277,6 +287,10 @@ function formatDateToKor(date, withTime) {
 
   if (withTime) {
     text += ` ${date.getHours()}:${date.getMinutes()}`;
+  }
+
+  if (isWeekend(date)) {
+    text += ` (${weekDay[date.getDay()]})`;
   }
   return text;
 }
