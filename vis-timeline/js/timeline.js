@@ -92,16 +92,24 @@ function handleUpdateEvent(item) {
 function handleMoveEvent(item) {
   // 예약 항목이 이동되었을 때, 이벤트 배열을 업데이트
   const eventIdx = getEventIndexById(item.id); // 이동한 이벤트의 인덱스를 찾음
-  events[eventIdx] = {
-    ...events[eventIdx],
-    group: item.group,
-    start: item.start,
-    end: item.end,
-  };
+
+  if (!isTimeSlotAvailable(item)) {
+    alert("이미 해당 시간에 예약된 회의가 있습니다!");
+  } else {
+    events[eventIdx] = {
+      ...events[eventIdx],
+      group: item.group,
+      start: item.start,
+      end: item.end,
+    };
+  }
+
   timeline.setItems(events); // 타임라인에 업데이트된 이벤트 목록을 반영
 }
 
 function handleRemoveEvent(item) {
+  if (!confirm("정말로 이 예약을 삭제하시겠습니까?")) return;
+
   // 예약 항목이 삭제되었을 때, 이벤트 배열에서 해당 항목을 제거
   const eventIdx = getEventIndexById(item.id); // 삭제할 이벤트의 인덱스를 찾음
   events.splice(eventIdx, 1); // 배열에서 해당 이벤트 제거
@@ -178,8 +186,31 @@ function getEventDataFromForm() {
   };
 }
 
+function isTimeSlotAvailable(newEvent) {
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+
+    if (
+      event.group === newEvent.group &&
+      event.id != newEvent.id && // 자기 자신은 제외
+      ((newEvent.start >= event.start && newEvent.start < event.end) ||
+        (newEvent.end > event.start && newEvent.end <= event.end) ||
+        (newEvent.start <= event.start && newEvent.end >= event.end))
+    ) {
+      console.log(event, newEvent);
+      return false; // 겹치는 예약이 있으면 false 반환
+    }
+  }
+  return true; // 모든 이벤트와 겹치지 않으면 true 반환
+}
+
 // 예약 제출 처리 (새로운 이벤트 추가/기존 이벤트 수정)
 function handleEventSubmit(newEvent) {
+  if (!isTimeSlotAvailable(newEvent)) {
+    alert("이미 해당 시간에 예약된 회의가 있습니다!");
+    return;
+  }
+
   const eventIdx = getEventIndexById(newEvent.id); // 기존 이벤트 수정
   if (eventIdx !== -1) {
     console.log("수정 :: ", newEvent);
