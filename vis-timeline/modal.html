@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회의실 예약 모달</title>
+    <link rel="stylesheet" href="./css/reservation_modal.css" />
+  </head>
+  <body>
+    <h2>회의실 예약 시스템</h2>
+
+    <!-- 예약 모달 열기 버튼 -->
+    <button id="openModalBtn">회의실 예약하기</button>
+
+    <!-- 모달 -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>회의실 예약</h3>
+        <form id="reservationForm">
+          <div class="form-group">
+            <label for="name">예약자 이름</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="date">예약 날짜</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">예약 시간</label>
+            <input type="time" id="time" name="time" required />
+          </div>
+          <div class="form-group">
+            <button type="submit">예약하기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // 모달 관련 변수들
+      var modal = document.getElementById("myModal");
+      var openModalBtn = document.getElementById("openModalBtn");
+      var closeModalBtn = document.getElementsByClassName("close")[0];
+
+      // 모달 열기 버튼 클릭 시 모달 열기
+      openModalBtn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // 모달 닫기 버튼 클릭 시 모달 닫기
+      closeModalBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // 모달 바깥 부분 클릭 시 모달 닫기
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // 예약 폼 제출 시 처리 (여기서는 알림만 띄움)
+      document.getElementById("reservationForm").onsubmit = function (event) {
+        event.preventDefault(); // 페이지 리로드 방지
+        var name = document.getElementById("name").value;
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        alert(`예약자: ${name}\n예약 날짜: ${date}\n예약 시간: ${time}`);
+        modal.style.display = "none"; // 예약 후 모달 닫기
+      };
+    </script>
+  </body>
+</html>
