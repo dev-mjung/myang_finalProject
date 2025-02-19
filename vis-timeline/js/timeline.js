@@ -87,10 +87,12 @@ function handleAddEvent(item) {
   onDoubleClick(item); // 새로운 예약 추가 시 모달을 열어 데이터 입력
 }
 
+// 더블 클릭 시 이벤트 핸들러
 function handleUpdateEvent(item) {
   onDoubleClick(item, item.id); // 기존 예약 수정 시 모달을 열어 데이터 수정
 }
 
+// 예약항목 움직일 때 이벤트 핸들러
 function handleMoveEvent(item) {
   // 예약 항목이 이동되었을 때, 이벤트 배열을 업데이트
   const eventIdx = getEventIndexById(item.id); // 이동한 이벤트의 인덱스를 찾음
@@ -188,6 +190,7 @@ function getEventDataFromForm() {
   };
 }
 
+// 시간이 기존 예약들에 중복되는지 체크
 function isTimeSlotAvailable(newEvent) {
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
@@ -247,14 +250,17 @@ function showData() {
   tbody.innerHTML = html; // 테이블의 tbody에 HTML 추가
 }
 
+// 전날
 function prevDate() {
   changeDate(-1);
 }
+
+// 다음날
 function nextDate() {
   changeDate(1);
 }
 
-// 타임라인 날짜 변경
+// 타임라인 기준 날짜 변경
 function changeDate(offset) {
   today.setDate(today.getDate() + offset);
   startTime = setTime(today, 9, 0);
@@ -264,6 +270,7 @@ function changeDate(offset) {
   // 주말인 경우 편집 안됨
   options.editable = !isWeekend(today);
 
+  // 타임라인 옵션 재 세팅
   timeline.setOptions({ ...options, start: startTime, end: endTime });
 }
 
