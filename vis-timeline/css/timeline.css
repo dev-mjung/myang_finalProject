@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* 버튼 */
+button {
+  margin: 2px;
+  padding: 6px 12px;
+  color: white;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+button:hover {
+  background-color: #2563eb;
+}
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+/* 타임라인 ui 스타일 */
+#timeline {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.vis-timeline {
+  border: none !important;
+  border-radius: 10px;
+}
+
+.vis-panel vis-top {
+  border: none !important;
+}
+
+/* 타임라인 위쪽 영문 날짜 영역 없앰 */
+.vis-even div {
+  display: none !important;
+}
+
+.vis-labelset .vis-label .vis-inner {
+  align-content: center;
+  height: 35px;
+}
+
+.vis-item.vis-range {
+  border: none;
+  background-color: #e4e3e3;
+}
+
+.vis-item,
+.vis-item-overflow {
+  top: 0 !important;
+  height: 100%;
+  align-content: center;
+  align-items: center;
+}
+
+.vis-timeline {
+  border: 1px solid #e4e3e3;
+}
+
+.vis-selected {
+  /* background-color: azure; */
+  background-color: #bdbdbd !important;
+}
+
+/* 테스트용 예약 목록 확인 테이블 */
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  text-align: center;
+  color: #333;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #e4e3e3;
+  color: black;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
+.btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  background-color: #e4e3e3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.btn:hover {
+  background-color: #e4e3e3;
+}
