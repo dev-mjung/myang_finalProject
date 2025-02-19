@@ -1,6 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
+  margin: 20px 10%;
+}
+
+h2 {
+  color: #333;
+  margin: 0;
+  margin-top: 20px;
 }
 
 /* 버튼 */
@@ -79,10 +86,6 @@ button:focus {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-h1 {
-  text-align: center;
-  color: #333;
 }
 table {
   width: 100%;
