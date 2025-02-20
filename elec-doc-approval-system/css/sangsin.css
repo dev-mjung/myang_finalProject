@@ -5,7 +5,6 @@ body {
 }
 
 .container {
-  width: 70%;
   margin: 20px auto;
 }
 
@@ -14,10 +13,10 @@ body {
   font-weight: 800;
 }
 
-.contents-section {
+/* .contents-section {
   border: 3px solid #e9e9e9;
   padding: 10px;
-}
+} */
 
 .contents-section h1 {
   text-align: center;
@@ -33,7 +32,7 @@ th,
 td {
   height: 20px;
   padding: 10px;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 .approval-contents {
@@ -42,7 +41,8 @@ td {
 }
 
 th {
-  width: 30%;
+  min-width: 30%;
+  align-content: center;
   background-color: #f2f2f2;
   font-weight: bold;
 }
@@ -69,7 +69,7 @@ textarea {
 }
 
 /* 버튼 */
-button {
+.contents_wrapper button {
   margin: 2px;
   padding: 6px 12px;
   color: white;
@@ -80,10 +80,10 @@ button {
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-button:hover {
+.contents_wrapper button:hover {
   background-color: #2563eb;
 }
-button:focus {
+.contents_wrapper button:focus {
   outline: none;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
 }
@@ -91,13 +91,13 @@ button:focus {
 .top-info {
   display: flex;
   justify-content: space-between;
-  gap: 30%;
+  gap: 35%;
 }
 
 .info-table,
 .signature-table {
   display: inline-block;
-  width: 48%;
+  min-width: 20%;
   vertical-align: top;
 }
 
