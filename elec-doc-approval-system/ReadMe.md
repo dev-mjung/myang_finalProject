@@ -2,4 +2,4 @@
 
 <br />
 
-결재 문서 폼 : sangsin.html
+결재 문서 폼 : intent-form.html
