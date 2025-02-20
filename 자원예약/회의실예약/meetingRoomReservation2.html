@@ -61,18 +61,18 @@
         <div class="contents_inner_wrapper">
           <div class="common_title mb-80">회의실예약</div>
           <div class="resourceReservation_wrapper">
-            <!-- <div class="contents">
-              <div class="content_title">예약일자</div>
-            </div> -->
-
-            <div style="display: flex; align-items: center; gap: 10px">
-              <div class="common_title">예약일자</div>
-
-              <div style="display: flex; align-items: center">
-                <div id="today-text" style="margin-right: 10px"></div>
-                <button onclick="prevDate()"><</button>
-                <button onclick="nextDate()">></button>
-              </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+              "
+            >
+              <button onclick="prevDate()"><</button>
+              <div id="today-text" class="common_title"></div>
+              <button onclick="nextDate()">></button>
+              <button onclick="setToday()">오늘</button>
             </div>
 
             <!-- vis 라이브러리 타임라인 ui 영역 -->

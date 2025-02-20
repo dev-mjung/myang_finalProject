@@ -11,23 +11,22 @@ h2 {
 
 /* 버튼 */
 .contents_wrapper button {
+  background-color: transparent;
   margin: 2px;
   padding: 6px 12px;
-  background-color: #3b82f6;
-  color: white;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* border-radius: 8px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  /* transition: background-color 0.3s, box-shadow 0.3s; */
 }
-.contents_wrapper button:hover {
+/* .contents_wrapper button:hover {
   background-color: #2563eb;
-}
-.contents_wrapper button:focus {
+} */
+/* .contents_wrapper button:focus {
   outline: none;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
-}
+} */
 
 /* 타임라인 ui 스타일 */
 #timeline {

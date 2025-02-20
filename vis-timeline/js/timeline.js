@@ -260,18 +260,32 @@ function nextDate() {
   changeDate(1);
 }
 
+// 오늘
+function setToday() {
+  today = new Date(); // 오늘 날짜로 초기화
+  startTime = setTime(today, 9, 0);
+  endTime = setTime(today, 18, 0);
+  updateTimeline();
+}
+
+// 타임라인 옵션 업데이트
+function updateTimeline() {
+  const options = {
+    start: startTime,
+    end: endTime,
+    editable: !isWeekend(today), // 주말일 경우 편집 불가
+  };
+
+  // 타임라인 옵션 재세팅
+  timeline.setOptions(options);
+}
+
 // 타임라인 기준 날짜 변경
 function changeDate(offset) {
   today.setDate(today.getDate() + offset);
   startTime = setTime(today, 9, 0);
   endTime = setTime(today, 18, 0);
-  options.start = startTime;
-  options.end = endTime;
-  // 주말인 경우 편집 안됨
-  options.editable = !isWeekend(today);
-
-  // 타임라인 옵션 재 세팅
-  timeline.setOptions({ ...options, start: startTime, end: endTime });
+  updateTimeline();
 }
 
 // 시간을 설정하는 함수
@@ -296,8 +310,6 @@ function formatDateToKor(date, withTime) {
     text += ` ${date.getHours()}:${date.getMinutes()}`;
   }
 
-  if (isWeekend(date)) {
-    text += ` (${weekDay[date.getDay()]})`;
-  }
+  text += ` (${weekDay[date.getDay()]})`;
   return text;
 }
