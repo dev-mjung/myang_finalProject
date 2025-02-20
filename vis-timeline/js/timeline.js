@@ -60,7 +60,10 @@ const options = {
   onAdd: handleAddEvent, // 새 예약 항목 추가 시 호출될 함수
   onUpdate: handleUpdateEvent, // 예약 항목 수정 시 호출될 함수
   onMove: handleMoveEvent, // 예약 항목 이동 시 호출될 함수
-  onRemove: handleRemoveEvent, // 예약 항목 삭제 시 호출될 함수
+  onRemove: function (item) {
+    // 예약 항목 삭제 시 호출될 함수
+    handleRemoveEvent(item.id);
+  },
 };
 
 // 타임라인 생성
@@ -121,11 +124,11 @@ function handleMoveEvent(item) {
   showData();
 }
 
-function handleRemoveEvent(item) {
+function handleRemoveEvent(id) {
   if (!confirm("정말로 이 예약을 삭제하시겠습니까?")) return;
 
   // 예약 항목이 삭제되었을 때, 이벤트 배열에서 해당 항목을 제거
-  const eventIdx = getEventIndexById(item.id); // 삭제할 이벤트의 인덱스를 찾음
+  const eventIdx = getEventIndexById(id); // 삭제할 이벤트의 인덱스를 찾음
   events.splice(eventIdx, 1); // 배열에서 해당 이벤트 제거
   timeline.setItems(events); // 타임라인에 업데이트된 이벤트 목록을 반영
   showData();
@@ -275,6 +278,7 @@ function showData() {
     const currentEvent = events[i];
     const groupName = getGroupNameById(currentEvent.group); // 그룹명(회의실명) 가져오기
     console.log(`${i} : ${JSON.stringify(currentEvent)}`);
+    // onclick 속성 안에서는 함수 호출 시 인자를 문자열로 처리하기 때문에 stringfy
     html += `<tr>
                 <td>${currentEvent.id}</td>
                 <td>${currentEvent.employee}</td>
@@ -283,7 +287,9 @@ function showData() {
                 <td>${formatDateToKor(currentEvent.end, true)}</td>
                 <td>${groupName}</td>
                 <td>${
-                  isEventOngoing(currentEvent) ? `<button>반납</button>` : `<button>취소</button>`
+                  isEventOngoing(currentEvent)
+                    ? `<button>반납</button>`
+                    : `<button onclick="handleRemoveEvent(${currentEvent.id})">취소</button>`
                 }</td>
               </tr>`;
   }
