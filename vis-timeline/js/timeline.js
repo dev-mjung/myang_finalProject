@@ -118,6 +118,7 @@ function handleMoveEvent(item) {
   }
 
   timeline.setItems(events); // 타임라인에 업데이트된 이벤트 목록을 반영
+  showData();
 }
 
 function handleRemoveEvent(item) {
@@ -127,6 +128,7 @@ function handleRemoveEvent(item) {
   const eventIdx = getEventIndexById(item.id); // 삭제할 이벤트의 인덱스를 찾음
   events.splice(eventIdx, 1); // 배열에서 해당 이벤트 제거
   timeline.setItems(events); // 타임라인에 업데이트된 이벤트 목록을 반영
+  showData();
 }
 
 // 예약 모달을 열고 데이터 세팅
