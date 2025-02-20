@@ -356,7 +356,7 @@ function formatDateToKor(date, withTime) {
   let text = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 
   if (withTime) {
-    text += ` ${date.getHours()}:${date.getMinutes()}`;
+    text += ` ${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
   }
 
   text += ` (${weekDay[date.getDay()]})`;
