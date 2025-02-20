@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전자결재 근태 신청서 상신</title>
+    <link rel="stylesheet" href="/mj_common/common.css" />
+
+    <link href="./css/sangsin.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="common_wrapper">
+      <div class="side_menu_wrapper">
+        <div class="side_menu_inner_wrapper">
+          <span class="common_title">전자결재</span>
+          <button type="button">기안문서 작성</button>
+          <ul class="side_menu_list">
+            <li><a href="#">홈</a></li>
+            <li class="active">결재대기문서함</li>
+            <li><a href="#">참조문서함</a></li>
+            <li><a href="#">임시저장함</a></li>
+            <li><a href="#">기안문서함</a></li>
+            <li><a href="#">팀문서함</a></li>
+            <li><a href="#">환경설정</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="contents_wrapper">
+        <div class="contents_inner_wrapper">
+          <div class="common_title mb-40">전자결재</div>
+          <div class="common_title" style="text-align: center">근태 신청서</div>
+
+          <div class="container">
+            <form action="#" method="post">
+              <div class="btn-container">
+                <button type="submit" class="btn-submit">결재요청</button>
+                <button
+                  type="button"
+                  class="btn-cancel"
+                  onclick="window.history.back()"
+                >
+                  취소
+                </button>
+                <button>미리보기</button>
+                <button>결재정보</button>
+              </div>
+
+              <div class="contents-section">
+                <!-- 상단 기안자 정보 및 서명 테이블 -->
+                <div class="top-info">
+                  <div class="info-table">
+                    <table>
+                      <tr>
+                        <th>기안자</th>
+                        <td>홍길동</td>
+                      </tr>
+                      <tr>
+                        <th>기안부서</th>
+                        <td>마케팅부</td>
+                      </tr>
+                      <tr>
+                        <th>기안일</th>
+                        <td>2025/02/11</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div class="signature-table">
+                    <table>
+                      <tr>
+                        <th rowspan="3" style="width: 10px">승인</th>
+                        <td>박팀장</td>
+                        <th rowspan="3" style="width: 10px">결재</th>
+                        <td>한팀장</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- 종류, 상신자, 결재 내용 테이블 -->
+                <table>
+                  <tr>
+                    <th>문서 번호</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>결재 종류</th>
+                    <td>근태 신청서</td>
+                  </tr>
+                  <tr>
+                    <th>시작 일시</th>
+                    <td><input type="text" required /></td>
+                  </tr>
+                  <tr>
+                    <th>종료 일시</th>
+                    <td><input type="text" required /></td>
+                  </tr>
+                  <tr>
+                    <th>반차 여부</th>
+                    <td>
+                      <input
+                        type="checkbox"
+                        id="start"
+                        name="start"
+                        onclick="toggleStartDate()"
+                      />
+                      <label for="start">시작일</label>
+                      <input
+                        type="date"
+                        id="start_date"
+                        name="start_date"
+                        disabled
+                      />
+
+                      <br /><br />
+
+                      <input
+                        type="checkbox"
+                        id="end"
+                        name="end"
+                        onclick="toggleEndDate()"
+                      />
+                      <label for="end">종료일</label>
+                      <input
+                        type="date"
+                        id="end_date"
+                        name="end_date"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>일수</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>내용</th>
+                    <td class="approval-contents">
+                      <textarea
+                        placeholder=""
+                        id="approval-comments"
+                        style="height: 100%; resize: vertical"
+                      ></textarea>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>첨부 파일</th>
+                    <td>
+                      <input type="file" id="attachment" name="attachment" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

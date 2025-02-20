@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전자결재 업무 품의서 상신</title>
+    <link rel="stylesheet" href="/mj_common/common.css" />
+
+    <link href="./css/sangsin.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="common_wrapper">
+      <div class="side_menu_wrapper">
+        <div class="side_menu_inner_wrapper">
+          <span class="common_title">전자결재</span>
+          <button type="button">기안문서 작성</button>
+          <ul class="side_menu_list">
+            <li><a href="#">홈</a></li>
+            <li class="active">결재대기문서함</li>
+            <li><a href="#">참조문서함</a></li>
+            <li><a href="#">임시저장함</a></li>
+            <li><a href="#">기안문서함</a></li>
+            <li><a href="#">팀문서함</a></li>
+            <li><a href="#">환경설정</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="contents_wrapper">
+        <div class="contents_inner_wrapper">
+          <div class="common_title mb-40">전자결재</div>
+          <div class="common_title" style="text-align: center">업무 품의서</div>
+
+          <div class="container">
+            <form action="#" method="post">
+              <div class="btn-container">
+                <button type="submit" class="btn-submit">결재요청</button>
+                <button
+                  type="button"
+                  class="btn-cancel"
+                  onclick="window.history.back()"
+                >
+                  취소
+                </button>
+                <button>미리보기</button>
+                <button>결재정보</button>
+              </div>
+
+              <div class="contents-section">
+                <!-- 상단 기안자 정보 및 서명 테이블 -->
+                <div class="top-info">
+                  <div class="info-table">
+                    <table>
+                      <tr>
+                        <th>기안자</th>
+                        <td>홍길동</td>
+                      </tr>
+                      <tr>
+                        <th>기안부서</th>
+                        <td>마케팅부</td>
+                      </tr>
+                      <tr>
+                        <th>기안일</th>
+                        <td>2025/02/11</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div class="signature-table">
+                    <table>
+                      <tr>
+                        <th rowspan="3" style="width: 10px">승인</th>
+                        <td>박팀장</td>
+                        <th rowspan="3" style="width: 10px">결재</th>
+                        <td>한팀장</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- 종류, 상신자, 결재 내용 테이블 -->
+                <table>
+                  <tr>
+                    <th>문서 번호</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>결재 종류</th>
+                    <td>업무 품의서</td>
+                  </tr>
+                  <tr>
+                    <th>결재 제목</th>
+                    <td><input type="text" required /></td>
+                  </tr>
+                  <tr>
+                    <th>결재 내용</th>
+                    <td class="approval-contents">
+                      예시) <br />
+                      OOO년 OO월 OO일 OOO에 근거하여 OOO원 사용금액을 OOO회사
+                      측에 결제하고자 하오니 검토 후 재가하여 주시기 바랍니다.
+                      <br /><br />
+                      - 아 래 -
+                      <br />
+                      1. 목적 : 계약에 근거한 OO월 OO차분 대금결제
+                      <br />
+                      2. 금액 : 일금 OO만원 (부가세 별도)
+                      <br />
+                      3. 지급날짜 : 품의완료일로부터 즉시
+                      <br /><br />
+                      <div>
+                        <label for="approval-comments">추가 내용</label>
+                        <textarea
+                          placeholder="위의 양식을 따라주시기 바랍니다."
+                          id="approval-comments"
+                          style="width: 100%; height: 220px; resize: vertical"
+                        ></textarea>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>첨부 파일</th>
+                    <td>
+                      <input type="file" id="attachment" name="attachment" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
