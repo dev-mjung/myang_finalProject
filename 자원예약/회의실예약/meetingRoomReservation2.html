@@ -24,16 +24,8 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link
-      href="../../vis-timeline/css/reservation_modal.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="../../vis-timeline/css/timeline.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="../../vis-timeline/css/reservation_modal.css" rel="stylesheet" type="text/css" />
+    <link href="../../vis-timeline/css/timeline.css" rel="stylesheet" type="text/css" />
     <title>회의실예약</title>
   </head>
   <body>
@@ -67,9 +59,7 @@
               <button class="next-button" onclick="nextDate()">></button>
               <button onclick="setToday()">오늘</button>
             </div>
-            <span style="font-size: small; color: gray"
-              >* 예약을 추가하려면 더블클릭 하세요.</span
-            >
+            <span class="timeline-noti">* 예약을 추가/수정하려면 더블클릭 하세요.</span>
 
             <!-- vis 라이브러리 타임라인 ui 영역 -->
             <div id="timeline"></div>
@@ -83,13 +73,7 @@
                   <input type="hidden" id="group" name="group" required />
                   <div class="form-group">
                     <label for="resource_name">회의실 명</label>
-                    <input
-                      disabled
-                      type="text"
-                      id="resource_name"
-                      name="resource_name"
-                      required
-                    />
+                    <input disabled type="text" id="resource_name" name="resource_name" required />
                   </div>
                   <div class="form-group">
                     <label for="content">예약 명</label>
@@ -99,9 +83,7 @@
                     <!-- 예약 시작 -->
                     <label for="start-time"
                       >예약 시작
-                      <span class="input-group-addon" id="start-date"
-                        >2025-02-20</span
-                      ></label
+                      <span class="input-group-addon" id="start-date">2025-02-20</span></label
                     >
                     <!-- 날짜 표시 -->
                     <input
@@ -116,9 +98,7 @@
                     <!-- 예약 종료 -->
                     <label for="end-time"
                       >예약 종료
-                      <span class="input-group-addon" id="end-date"
-                        >2025-02-20</span
-                      ></label
+                      <span class="input-group-addon" id="end-date">2025-02-20</span></label
                     >
 
                     <!-- 날짜 표시 -->
@@ -141,13 +121,7 @@
           </div>
 
           <div id="reservation-table">
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-              "
-            >
+            <div style="display: flex; justify-content: space-between; align-items: center">
               <div class="common_title">내 예약/대여 현황</div>
               <div style="display: flex; justify-content: end"></div>
             </div>

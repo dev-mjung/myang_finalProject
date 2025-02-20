@@ -79,6 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("reservationForm").onsubmit = function (event) {
   event.preventDefault(); // 페이지 리로드 방지
   const newEvent = getEventDataFromForm(); // 폼 데이터에서 예약 정보를 가져옴
+
+  if (!isEndTimeValid(newEvent.end)) {
+    alert("종료일은 18시 이전까지 가능합니다. ");
+    return;
+  }
+
   handleEventSubmit(newEvent); // 예약 처리 함수 호출
   showData(); // 내 예약/대여 현황 테이블 재조회및 세팅
 };
@@ -161,6 +167,10 @@ function setModalForm(event, groupName) {
   const endTime = new Date(event.start);
   endTime.setMinutes(endTime.getMinutes() + 60);
 
+  if (!isEndTimeValid(endTime)) {
+    endTime.setHours(18, 0, 0);
+  }
+
   // 종료 시간 설정
   document.getElementById("end-time").value = formatDate(endTime); // 종료 시간
 
@@ -172,6 +182,14 @@ function setModalForm(event, groupName) {
   // 날짜 텍스트 업데이트
   document.getElementById("start-date").textContent = date;
   document.getElementById("end-date").textContent = date;
+}
+
+// 종료시간이 18시 이후이면 18시 00분으로 세팅한다.
+function isEndTimeValid(endTime) {
+  if (endTime.getHours() === 18 && endTime.getMinutes() > 0) {
+    return false;
+  }
+  return true;
 }
 
 // ID로 이벤트 찾기
@@ -261,9 +279,7 @@ function showData() {
                 <td>${formatDateToKor(currentEvent.end, true)}</td>
                 <td>${groupName}</td>
                 <td>${
-                  isEventOngoing(currentEvent)
-                    ? `<button>반납</button>`
-                    : `<button>취소</button>`
+                  isEventOngoing(currentEvent) ? `<button>반납</button>` : `<button>취소</button>`
                 }</td>
               </tr>`;
   }
@@ -333,9 +349,7 @@ function isWeekend(date) {
 
 // withTime 이 true이면 시간까지 return
 function formatDateToKor(date, withTime) {
-  let text = `${date.getFullYear()}년 ${
-    date.getMonth() + 1
-  }월 ${date.getDate()}일`;
+  let text = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 
   if (withTime) {
     text += ` ${date.getHours()}:${date.getMinutes()}`;
