@@ -80,6 +80,7 @@ document.getElementById("reservationForm").onsubmit = function (event) {
   event.preventDefault(); // 페이지 리로드 방지
   const newEvent = getEventDataFromForm(); // 폼 데이터에서 예약 정보를 가져옴
   handleEventSubmit(newEvent); // 예약 처리 함수 호출
+  showData(); // 내 예약/대여 현황 테이블 재조회및 세팅
 };
 
 // 새 예약 추가 또는 기존 예약 수정
@@ -153,8 +154,24 @@ function setModalForm(event, groupName) {
   document.getElementById("group").value = event.group || ""; // 자원 그룹 ID
   document.getElementById("content").value = event.content || ""; // 예약 내용
   document.getElementById("resource_name").value = groupName; // 자원 이름
-  document.getElementById("start").value = formatDate(event.start); // 시작 시간
-  document.getElementById("end").value = formatDate(event.end || ""); // 끝 시간 (없으면 빈 값)
+  // 시작 시간 설정
+  document.getElementById("start-time").value = formatDate(event.start); // 시작 시간
+
+  // 60분 더하기
+  const endTime = new Date(event.start);
+  endTime.setMinutes(endTime.getMinutes() + 60);
+
+  // 종료 시간 설정
+  document.getElementById("end-time").value = formatDate(endTime); // 종료 시간
+
+  const yyyy = event.start.getFullYear();
+  const mm = (event.start.getMonth() + 1).toString().padStart(2, "0");
+  const dd = event.start.getDate().toString().padStart(2, "0");
+  const date = `${yyyy}-${mm}-${dd}`;
+
+  // 날짜 텍스트 업데이트
+  document.getElementById("start-date").textContent = date;
+  document.getElementById("end-date").textContent = date;
 }
 
 // ID로 이벤트 찾기
@@ -167,25 +184,24 @@ function getEventIndexById(id) {
   return -1; // 해당 ID를 가진 이벤트가 없으면 -1 반환
 }
 
-// 날짜 형식 변환 (YYYY-MM-DDTHH:mm 형식으로 변환)
-function formatDate(date) {
-  const d = new Date(date); // Date 객체 생성
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  const hours = String(d.getHours()).padStart(2, "0");
-  const minutes = String(d.getMinutes()).padStart(2, "0");
-  return `${year}-${month}-${day}T${hours}:${minutes}`;
-}
-
 // 예약 데이터 폼에서 가져오기
 function getEventDataFromForm() {
+  const startDate = document.getElementById("start-date").innerText;
+  const endDate = document.getElementById("end-date").innerText;
+  const startTime = document.getElementById("start-time").value;
+  const endTime = document.getElementById("end-time").value;
+
+  console.log({
+    start: `${startDate} ${startTime}`,
+    end: `${endDate} ${endTime}`,
+  });
+
   return {
     id: document.getElementById("id").value || events.length + 1, // 수정 시 ID 유지, 새로 추가 시 새로운 ID 부여
     group: document.getElementById("group").value, // 자원 그룹 ID
     content: document.getElementById("content").value, // 예약 내용
-    start: new Date(document.getElementById("start").value), // 시작 시간
-    end: new Date(document.getElementById("end").value), // 끝 시간
+    start: new Date(`${startDate} ${startTime}`), // 시작 시간
+    end: new Date(`${endDate} ${endTime}`), // 끝 시간
     employee: "한민정", // 예약자 (예시로 한민정 사용)
   };
 }
@@ -244,10 +260,25 @@ function showData() {
                 <td>${formatDateToKor(currentEvent.start, true)}</td>
                 <td>${formatDateToKor(currentEvent.end, true)}</td>
                 <td>${groupName}</td>
+                <td>${
+                  isEventOngoing(currentEvent)
+                    ? `<button>반납</button>`
+                    : `<button>취소</button>`
+                }</td>
               </tr>`;
   }
 
   tbody.innerHTML = html; // 테이블의 tbody에 HTML 추가
+}
+
+// 현재 사용중인 자원인지!!
+function isEventOngoing(event) {
+  const currentTime = new Date();
+  const eventStart = new Date(event.start); // 예약 시작 시간
+  const eventEnd = new Date(event.end); // 예약 종료 시간
+
+  // 현재 시간이 예약 시작 시간과 종료 시간 사이에 있으면 진행 중
+  return currentTime >= eventStart && currentTime <= eventEnd;
 }
 
 // 전날
@@ -312,4 +343,16 @@ function formatDateToKor(date, withTime) {
 
   text += ` (${weekDay[date.getDay()]})`;
   return text;
+}
+
+// 날짜 형식 변환 (YYYY-MM-DDTHH:mm 형식으로 변환)
+function formatDate(date) {
+  const d = new Date(date); // Date 객체 생성
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  const hours = String(d.getHours()).padStart(2, "0");
+  const minutes = String(d.getMinutes()).padStart(2, "0");
+  // return `${year}-${month}-${day}T${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
