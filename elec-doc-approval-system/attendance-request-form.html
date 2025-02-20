@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>전자결재 업무 품의서 상신</title>
+    <title>전자결재 근태 신청서 상신</title>
     <link rel="stylesheet" href="/mj_common/common.css" />
 
     <link href="./css/sangsin.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
       <div class="contents_wrapper">
         <div class="contents_inner_wrapper">
           <div class="common_title mb-40">전자결재</div>
-          <div class="common_title" style="text-align: center">업무 품의서</div>
+          <div class="common_title" style="text-align: center">근태 신청서</div>
 
           <div class="container">
             <form action="#" method="post">
@@ -90,35 +90,62 @@
                   </tr>
                   <tr>
                     <th>결재 종류</th>
-                    <td>업무 품의서</td>
+                    <td>근태 신청서</td>
                   </tr>
                   <tr>
-                    <th>결재 제목</th>
+                    <th>시작 일시</th>
                     <td><input type="text" required /></td>
                   </tr>
                   <tr>
-                    <th>결재 내용</th>
+                    <th>종료 일시</th>
+                    <td><input type="text" required /></td>
+                  </tr>
+                  <tr>
+                    <th>반차 여부</th>
+                    <td>
+                      <input
+                        type="checkbox"
+                        id="start"
+                        name="start"
+                        onclick="toggleStartDate()"
+                      />
+                      <label for="start">시작일</label>
+                      <input
+                        type="date"
+                        id="start_date"
+                        name="start_date"
+                        disabled
+                      />
+
+                      <br /><br />
+
+                      <input
+                        type="checkbox"
+                        id="end"
+                        name="end"
+                        onclick="toggleEndDate()"
+                      />
+                      <label for="end">종료일</label>
+                      <input
+                        type="date"
+                        id="end_date"
+                        name="end_date"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>일수</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>내용</th>
                     <td class="approval-contents">
-                      예시) <br />
-                      OOO년 OO월 OO일 OOO에 근거하여 OOO원 사용금액을 OOO회사
-                      측에 결제하고자 하오니 검토 후 재가하여 주시기 바랍니다.
-                      <br /><br />
-                      - 아 래 -
-                      <br />
-                      1. 목적 : 계약에 근거한 OO월 OO차분 대금결제
-                      <br />
-                      2. 금액 : 일금 OO만원 (부가세 별도)
-                      <br />
-                      3. 지급날짜 : 품의완료일로부터 즉시
-                      <br /><br />
-                      <div>
-                        <label for="approval-comments">추가 내용</label>
-                        <textarea
-                          placeholder="위의 양식을 따라주시기 바랍니다."
-                          id="approval-comments"
-                          style="width: 100%; height: 220px; resize: vertical"
-                        ></textarea>
-                      </div>
+                      <textarea
+                        placeholder=""
+                        id="approval-comments"
+                        style="height: 100%; resize: vertical"
+                      ></textarea>
                     </td>
                   </tr>
 
