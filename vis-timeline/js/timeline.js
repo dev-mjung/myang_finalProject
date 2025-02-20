@@ -106,6 +106,8 @@ function handleMoveEvent(item) {
 
   if (!isTimeSlotAvailable(item)) {
     alert("이미 해당 시간에 예약된 회의가 있습니다!");
+  } else if (!isEndTimeValid(item.end)) {
+    alert("종료일은 18시 이전까지 가능합니다. ");
   } else {
     events[eventIdx] = {
       ...events[eventIdx],
