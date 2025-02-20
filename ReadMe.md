@@ -2,7 +2,7 @@
 
 #### 자원 예약
 
-- 예약 폼: /자원예약/meetingRoomReservation2.html
+- 예약 폼: [/자원예약/meetingRoomReservation2.html](http://localhost:5500/%EC%9E%90%EC%9B%90%EC%98%88%EC%95%BD/%ED%9A%8C%EC%9D%98%EC%8B%A4%EC%98%88%EC%95%BD/meetingRoomReservation2.html)
 - 전자결재 업무품의서 폼 : [/elec-doc-approval-system/intent-form.html](http://localhost:5500/elec-doc-approval-system/intent-form.html)
 - 전자결재 지출결의서 폼 : [/elec-doc-approval-system/expenditure-resolution-form.html](http://localhost:5500/elec-doc-approval-system/expenditure-resolution-form.html)
 - 전자결재 근태신청서 폼 : [/elec-doc-approval-system/attendance-request-form.html](http://localhost:5500/elec-doc-approval-system/attendance-request-form.html)
