@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전자결재 양식 선택</title>
+    <script src="/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+
+      /* 팝업 배경 */
+      .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      /* 팝업 박스 */
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 40%;
+        display: flex;
+        gap: 10px;
+      }
+
+      /* 왼쪽 리스트 영역 */
+      .form-list {
+        width: 30%;
+        padding: 10px 20px;
+        /* border-right: 1px solid #ddd; */
+        border: 1px solid #ddd;
+      }
+
+      .form-option {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* 오른쪽 상세 정보 영역 */
+      .form-detail {
+        width: 70%;
+        border: 1px solid #ddd;
+      }
+
+      .form-header {
+        border-bottom: 1px solid #ddd;
+        background-color: #c6d4ee;
+        padding: 5px 20px;
+        font-size: 1.2em;
+        margin-bottom: 15px;
+      }
+
+      .form-desc {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>전자결재 양식 선택</h1>
+
+    <!-- 팝업 -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <!-- 왼쪽 양식 리스트 -->
+        <div class="form-list">
+          <div class="form-option" onclick="showDetails('휴가 신청')">업무 품의서</div>
+          <div class="form-option" onclick="showDetails('비용 결재')">근태 신청서</div>
+          <div class="form-option" onclick="showDetails('출장 신청')">지출 결의서</div>
+          <div class="form-option" onclick="showDetails('기타')">기타</div>
+        </div>
+
+        <!-- 오른쪽 상세 정보 -->
+        <div class="form-detail">
+          <div id="formHeader" class="form-header">양식을 선택하세요</div>
+          <div id="formDescription" class="form-desc">
+            <table>
+              <tr>
+                <td>제목</td>
+                <td>업무 품의서</td>
+              </tr>
+              <tr>
+                <td>제목</td>
+                <td>업무 품의서</td>
+              </tr>
+              <tr>
+                <td>제목</td>
+                <td>업무 품의서</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 양식 상세 정보 보여주기
+      function showDetails(formName) {
+        const formHeader = document.getElementById("formHeader");
+        const formDescription = document.getElementById("formDescription");
+
+        switch (formName) {
+          case "휴가 신청":
+            formHeader.innerText = "휴가 신청 양식";
+            formDescription.innerHTML =
+              "<p>휴가 신청 양식입니다. 사용자는 휴가 날짜와 기간을 선택하고, 사유를 작성할 수 있습니다.</p>";
+            break;
+          case "비용 결재":
+            formHeader.innerText = "비용 결재 양식";
+            formDescription.innerHTML =
+              "<p>비용 결재 양식입니다. 사용자는 발생한 비용을 입력하고, 결재를 요청할 수 있습니다.</p>";
+            break;
+          case "출장 신청":
+            formHeader.innerText = "출장 신청 양식";
+            formDescription.innerHTML =
+              "<p>출장 신청 양식입니다. 사용자는 출장 날짜와 목적지, 출장비 등을 입력할 수 있습니다.</p>";
+            break;
+          case "기타":
+            formHeader.innerText = "기타 양식";
+            formDescription.innerHTML =
+              "<p>기타 양식입니다. 특별한 요청이나 기타 사유에 대한 양식을 작성할 수 있습니다.</p>";
+            break;
+          default:
+            formHeader.innerText = "양식을 선택하세요";
+            formDescription.innerHTML = "양식에 대한 상세 정보가 이곳에 표시됩니다.";
+        }
+      }
+    </script>
+  </body>
+</html>
